@@ -1,0 +1,6 @@
+com/gotprint/entity/User.class
+com/gotprint/repository/NotesRepository.class
+com/gotprint/repository/UserRepository.class
+com/gotprint/controller/GotPrintController.class
+com/gotprint/entity/Notes.class
+com/gotprint/GotprintApplication.class
