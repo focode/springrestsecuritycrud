@@ -10,6 +10,8 @@ IDE: Eclipse/STS
 OS: Ubuntu
 
 and because it is a micro service you can use following commad for running it from the root directory of the project
+
+
 mvn spring-boot:run
 
 I have inlittilay populated some data in class : GotprintApplication
