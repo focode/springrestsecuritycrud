@@ -31,7 +31,7 @@ public class GotPrintController {
 	@Autowired
 	private UserRepository userRepository;
 	
-    @RequestMapping("/createnotes")
+    @RequestMapping(value = "/createnotes",method=RequestMethod.POST,consumes = "application/json")
     @Transactional
     public Notes create(@RequestBody Notes note) {
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -51,7 +51,7 @@ public class GotPrintController {
        	return notes;
     }
     
-    @RequestMapping(value="/delete/{id}/", method=RequestMethod.DELETE)
+    @RequestMapping(value="/delete/{id}/", method=RequestMethod.DELETE,consumes = "application/json")
     @Transactional
     public String delete(@PathVariable Integer id){
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
