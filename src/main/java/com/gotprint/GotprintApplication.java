@@ -10,6 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
@@ -27,12 +29,13 @@ import com.gotprint.repository.UserRepository;
 
 @EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
 @Configuration
-@ComponentScan(basePackages = "com.gotprint")
+//@ComponentScan(basePackages = "com.gotprint")
+@ComponentScan
 @EnableJpaRepositories
 @ImportResource("classpath:SpringContext.xml")
 //@ImportResource("classpath:springsecurity.xml")
 @SpringBootApplication
-public class GotprintApplication implements CommandLineRunner{
+public class GotprintApplication extends SpringBootServletInitializer implements CommandLineRunner{
 	
 	@Autowired
 	private NotesRepository notesRepository;
@@ -43,6 +46,11 @@ public class GotprintApplication implements CommandLineRunner{
 	public static void main(String[] args) {
 		SpringApplication.run(GotprintApplication.class, args);
 	}
+	
+	@Override
+    protected final SpringApplicationBuilder configure(final SpringApplicationBuilder application) {
+        return application.sources(GotprintApplication.class);
+    }
 	
 	@Override
 	public void run(String... args) throws Exception {

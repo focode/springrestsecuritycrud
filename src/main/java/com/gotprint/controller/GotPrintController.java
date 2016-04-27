@@ -33,16 +33,11 @@ public class GotPrintController {
 	
     @RequestMapping("/createnotes")
     @Transactional
-    public Notes create() {
+    public Notes create(@RequestBody Notes note) {
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     	System.out.println("auth.getName::"+auth.getName());
-    	Notes notes = new Notes();
-    	notes.setCreateTime(new Date());
-    	notes.setLastUpdateTime(new Date());
-    	notes.setNote("My First Note");
-    	notes.setTitle("My first note title");
-    	notesRepository.save(notes);
-        return notes;
+    	notesRepository.save(note);
+        return note;
     }
     
     
@@ -56,7 +51,7 @@ public class GotPrintController {
        	return notes;
     }
     
-    @RequestMapping(value="/delete/{id}/", method=RequestMethod.POST)
+    @RequestMapping(value="/delete/{id}/", method=RequestMethod.DELETE)
     @Transactional
     public String delete(@PathVariable Integer id){
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -73,7 +68,7 @@ public class GotPrintController {
     	
     }
     
-    @RequestMapping(value="/update", method=RequestMethod.POST,headers = "Content-type: application/*")
+    @RequestMapping(value="/update", method=RequestMethod.PUT,consumes = "application/json")
     @Transactional
     public ResponseEntity<?> update(@RequestBody Notes note){
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();

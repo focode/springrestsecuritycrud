@@ -1,5 +1,6 @@
 package com.gotprint.entity;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 
@@ -12,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Entity; 
 
 @Entity
-public class User {
+public class User implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
