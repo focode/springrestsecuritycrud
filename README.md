@@ -53,6 +53,10 @@ and finally for deleting :
 
 curl -X -DELETE -u "a@a.a":a localhost:8080/delete/2
 
+their are two user 
+1. a@a.a
+2. b@b.b
+both are configured in springsecurity 
 
 
 watch this project for integrating with Eureka and Apache zookeeper
